@@ -1,0 +1,8 @@
+Question 1: What does File->Revert do?
+It resets the file to last save. This essentially undoes everything that has been edited sine the last save.
+
+Question 2: Run the program in debug mode. Describe what happens when you walk through the loop in showPeople.
+Stepping thorough the showPeople, shows the code doing through all the friends and printing out the object to the terminal
+
+Question 3: Comment out the toString function of the Friend class. What do you notice? 
+Instead of printing out the name and email of each person, it prints what i presume is the memory address of the object
