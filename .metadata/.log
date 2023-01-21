@@ -814,3 +814,15 @@ Binding(ALT+COMMAND+R,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,cocoa,system)
+
+!ENTRY com.genuitec.eclipse.codetogether.ui 2 0 2023-01-17 14:45:11.575
+!MESSAGE A low-level error has occurred in CodeTogether
+!STACK 0
+java.util.ConcurrentModificationException
+	at java.base/java.util.HashMap$HashIterator.nextNode(HashMap.java:1597)
+	at java.base/java.util.HashMap$KeyIterator.next(HashMap.java:1620)
+	at com.genuitec.eclipse.codetogether.services.RoomService.lambda$2(RoomService.java:73)
+	at com.genuitec.eclipse.codetogether.comms.RpcWorkerPool$1.run(RpcWorkerPool.java:23)
+
+!ENTRY com.genuitec.eclipse.codetogether.ui 1 0 2023-01-17 15:18:05.510
+!MESSAGE Connection closed with CodeTogether backend: 
