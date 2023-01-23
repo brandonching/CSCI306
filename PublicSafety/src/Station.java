@@ -5,10 +5,9 @@ public class Station {
 	/**
 	 * @param detectives
 	 */
-	String name;
+	private String name;
 	public static int nextBadgeNumber = 1;
-
-
+	public static final int MAX_DETECTIVES = 5;
 
 
 	public String getName() {
@@ -37,7 +36,12 @@ public class Station {
 	}
 
 	public void addDetectives(String name, int badge) {
-		detectives.add(new Detective(name, badge));
+		if(detectives.size() < MAX_DETECTIVES) {
+			detectives.add(new Detective(name, badge));
+		}
+		else {
+			System.out.println("Error: Max detectives reached");
+		}
 	}
 
 
