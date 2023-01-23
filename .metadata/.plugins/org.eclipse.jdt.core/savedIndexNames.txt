@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+/Users/brandonching/Documents/GitHub/CSCI306/.metadata/.plugins/org.eclipse.jdt.core
-777570096.index
-1865797976.index
-2421326657.index
-3302127868.index
