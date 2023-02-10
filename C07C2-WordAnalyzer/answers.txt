@@ -1,0 +1,30 @@
+Q1: What method and line was the call to the Java library made from? What line from main() triggered the error?  What is your guess as to what went wrong to create the exception?   (5pts)
+The call to the Java library was made from line 32 of the firstRepeatedCharacter function in WordAnalyzer.java. Based on the error message of "String index out of range: 4", the most likely cause of the error is due to the +1 in the charAt function call. On the last iteration of the for loop, calling for i+1 is the first index past the last letter, aka doesn't exist. The functionality of this call is actually correct, so the real error lies in the conditional statement of the for loop not stopping the loop soon enough.
+
+
+
+Q2: How would you fix the bug and what is your output? (10pts)
+I fixed the bug by setting the conditional term of the for loop to be "I < word.length()-1". This makes the last iteration of the for loop compare the last 2 letters, opposed to the last letter with a non existent letter.
+
+
+
+Q3:  In the constructor for WordAnalyser, insert a new line assert aWord != null ; and run the program.   What happens?   Now, the fun stuff, go to the eclipse ‘Run” dropdown and select “Run Configuration”, click on the Arguments tab and in the VM arguments box, add ‘-ea’.   Now run the program.   What happens? (10pts)
+Adding this line of code changed nothing in the output, attempting test(null) still errors out with "Cannot invoke "String.length()" because "this.word" is null"
+After changing the VM arguments config, the program still errors out, but with a "java.lang.AssertionError." This is a bit more useful as we can better track down where exactly the error is coming from.
+
+
+
+Q4: What is the value of word and is it correct?. (5pts) 
+The word is equal to "aabbcdaaaabb" which is correct for the third test
+
+
+
+Q5: What is c_index for the first trigger? Is this what we expect? (10pts)
+c_index = 2. This is not as expected, the starting index of the first repeated letter is 0
+
+
+
+Q6: From what we saw about the value of c_index, what is the bug and how would you fix it? (10pts)
+The bug is a result of the for loop starting from index 1, not 0. By adjusting this, and the if start if statement to handle the edge case of the first index, the code gives the expected output on all test.
+
+

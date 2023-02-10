@@ -10,6 +10,9 @@ public class WordAnalyzerTester {
 		test("roommate"); // expect: o (not m)
 		test("mate"); // expect: 0 (no duplicate letters)
 		test("test"); // expect: 0 (the t isn't repeating)
+		test("null");
+		test(null);
+		
 	}
 
 	public static void test(String s) {

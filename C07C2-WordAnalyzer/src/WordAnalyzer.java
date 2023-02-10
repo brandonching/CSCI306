@@ -16,6 +16,7 @@ public class WordAnalyzer {
 	 * @param aWord the word to be analyzed
 	 */
 	public WordAnalyzer(String aWord) {
+		assert aWord != null;
 		word = aWord;
 	}
 
@@ -27,9 +28,9 @@ public class WordAnalyzer {
 	 * @return the first repeated character, or 0 if none found
 	 */
 	public char firstRepeatedCharacter() {
-		for (int i = 0; i < word.length(); i++) {
+		for (int i = 0; i < word.length()-1; i++) {
 			char ch = word.charAt(i);
-			if (ch == word.charAt(i + 1))
+			if (ch == word.charAt(i+1))
 				return ch;
 		}
 		return 0;
@@ -68,10 +69,14 @@ public class WordAnalyzer {
 	 */
 	public int countRepeatedCharacters() {
 		int count = 0;
-		for (int c_index = 1; c_index < word.length() - 1; c_index++) {
+		for (int c_index = 0; c_index < word.length() - 1; c_index++) {
 			if (word.charAt(c_index) == word.charAt(c_index + 1)) // found a repetition
 			{
-				if ( word.charAt(c_index - 1) != word.charAt(c_index)) // it's the start
+				if ( c_index == 0) {
+					count++;
+
+				}else if(word.charAt(c_index - 1) != word.charAt(c_index)) // it's the start
+
 					count++;
 			}
 		}
