@@ -5,28 +5,35 @@
 
 public class Piece {
 	private int row;
-	private int col;
+	private int column;
 	public Color color;
 	public boolean king = false;
 	
+	/**
+	 * Prints out the symbol for the piece, if a king symbols are upper case
+	 */
 	public void draw() {
-		String symbol;
-		if (color == Color.RED) {
-			symbol = "r";
-		}
-		else {
-			symbol = "b";
-		}
+		// get the symbol corresponding to piece color
+		String symbol = color.toString();
+		
+		// if a king, make upper case
 		if (king) {
 			symbol = symbol.toUpperCase();
 		}
+		
 		System.out.print(symbol);
 	}
 	
-	public Piece(int row, int col, Color color) {
+	/**
+	 * Constructor for piece based on color, row, and column
+	 * @param row
+	 * @param column
+	 * @param color
+	 */
+	public Piece(int row, int column, Color color) {
 		super();
 		this.row = row;
-		this.col = col;
+		this.column = column;
 		this.color = color;
 	}
 }

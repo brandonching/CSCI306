@@ -1,46 +1,68 @@
 /** 
  * Board: Creates tiles, pieces, and draws the board
  * Author: Caleb Bartel 
+ * @author brandonching
  */
 
 import java.util.ArrayList;
 
 public class Board {
-	static final int booardDimension = 8;
-	static final int NUM_PIECE_ROWS = 3; // num of rows of pieces each player starts with
+	static final int BOARD_DIMENSION = 8; // side length of square board
+	static final int STARTING_ROWS = 3; // number of rows of pieces each player starts with
 	private Tile[][] tiles;
 	private ArrayList<Piece> boardPiecesArrayList;
-	
+
 	/** 
 	 * Default Constructor: Initializes tiles and pieces to default orientation
 	 */
+	@SuppressWarnings("unused")
 	public Board() {
 		super();
-		tiles = new Tile[booardDimension][booardDimension];
+
+		// Create an empty board of size BOARD_DIMENSION x BOARD_DIMENSION
+		tiles = new Tile[BOARD_DIMENSION][BOARD_DIMENSION];
+		// Create an empty array to contain all game pieces
 		boardPiecesArrayList = new ArrayList<Piece>();
-		
-		Color curTileColor = Color.RED;
-		for (int row = 0; row < booardDimension; row++){
-			for (int col = 0; col < booardDimension; col++){
-				tiles[row][col] = new Tile(row,col, curTileColor);
-				if (curTileColor == Color.BLACK && row < NUM_PIECE_ROWS) {
-					Piece piece = new Piece(row, col, Color.RED);
+
+		// Fill in the Board
+		Color currentTileColor = Color.RED;
+		for (int row = 0; row < BOARD_DIMENSION; row++){
+			for (int column = 0; column < BOARD_DIMENSION; column++){
+
+				// Create a new tile of the current color
+				tiles[row][column] = new Tile(row, column, currentTileColor);
+
+				// all pieces start on black spaces, check if within starting rows for red pieces
+				if (currentTileColor == Color.BLACK && row < STARTING_ROWS) {
+					Piece piece = new Piece(row, column, Color.RED);
 					boardPiecesArrayList.add(piece);
-					tiles[row][col].setPiece(piece);
+					tiles[row][column].setPiece(piece);
 				}
-				if (curTileColor == Color.BLACK && row > booardDimension - NUM_PIECE_ROWS - 1) {
-					Piece piece = new Piece(row, col, Color.BLACK);
+
+				// if a black tile and within the last black starting rows, create a black piece
+				if (currentTileColor == Color.BLACK && row > BOARD_DIMENSION - STARTING_ROWS - 1) {
+					Piece piece = new Piece(row, column, Color.BLACK);
 					boardPiecesArrayList.add(piece);
-					tiles[row][col].setPiece(piece);
+					tiles[row][column].setPiece(piece);
 				}
-				curTileColor = switchColor(curTileColor);
+				currentTileColor = switchColor(currentTileColor);
 			}
-			curTileColor = switchColor(curTileColor);
+			
+			// if board dimension is even, swap color to make tile colors on diagonal grid
+			if(BOARD_DIMENSION % 2 == 0) {
+				currentTileColor = switchColor(currentTileColor);
+			}
+
 		}
 	}
-	
-	private Color switchColor(Color curColor) {
-		if (curColor == Color.RED) {
+
+	/**
+	 * Get the opposite color
+	 * @param currentColor to be swapped
+	 * @return opposite color from current
+	 */
+	private Color switchColor(Color currentColor) {
+		if (currentColor == Color.RED) {
 			return Color.BLACK;
 		}
 		else {
@@ -55,18 +77,28 @@ public class Board {
 	 * Print a single character to standard out
 	 */
 	private void drawBoard() {
-		for (int i = 0; i < booardDimension; i++){
-			System.out.println("");
-			for (int j = 0; j < booardDimension; j++){
+		for (int row = 0; row < BOARD_DIMENSION; row++){
+			// print the row divider
+			for (int column = 0; column < BOARD_DIMENSION; column++){
 				System.out.print("----");
 			}
-			System.out.println("");
-			for (int j = 0; j < booardDimension; j++){
+			System.out.println("-");
+
+			// print the column divider and tile/piece symbol
+			for (int column = 0; column < BOARD_DIMENSION; column++){
 				System.out.print("| ");
-				tiles[i][j].draw();
-				System.out.print(" ");
+				tiles[row][column].draw();
+				System.out.
+				print(" ");
 			}	
+			System.out.println("|");
 		}
+		// print the last row divider
+		for (int column = 0; column < BOARD_DIMENSION; column++){
+			System.out.print("----");
+		}
+		System.out.println("-");
+
 	}
 
 	/** 

@@ -1,16 +1,27 @@
 public class Tile {
 	private int row;
-	private int col;
+	private int column;
 	private Color color;
+	private Piece piece;
 	
-	public Tile(int row, int col, Color color) {
+	
+	/**
+	 * Creates a Tile of color at row, column
+	 * @param row
+	 * @param column
+	 * @param color
+	 */
+	public Tile(int row, int column, Color color) {
 		super();
 		this.row = row;
-		this.col = col;
+		this.column = column;
 		this.color = color;
 	}
 	
-	private Piece piece;
+	/**
+	 * Sets the piece currently on tile
+	 * @param piece
+	 */
 	public void setPiece(Piece piece) {
 		this.piece = piece;
 	}
@@ -21,21 +32,11 @@ public class Tile {
 	 * Following the contract described in the drawBoard method of the Board class
 	 */
 	public void draw() {
+		// If a piece is currently on tile, call piece to draw respective symbol
+		// 		otherwise print tile color symbol
 		if (piece != null) {
-			String symbol;
-			if (piece.color == Color.RED) {
-				symbol = "r";
-			}
-			else {
-				symbol = "b";
-			}
-			if (piece.king) {
-				symbol = symbol.toUpperCase();
-			}
-			System.out.print(symbol);
-			return;
-		}
-		if (color == Color.RED) {
+			piece.draw();
+		} else if (color == Color.RED) {
 			System.out.print("X");
 		}
 		else {

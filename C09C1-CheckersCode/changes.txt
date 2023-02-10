@@ -1,0 +1,33 @@
+Changes in Board.java
+- 10: refactor booardDimention to BOARD_DIMENSION (and fix the typo)
+- 11: refactor NUM_PIECE_ROWS to STARTING_ROWS
+- 11: remove short hand text in comments
+-   : refactor curColor to currentColor
+-   : add function description to switchColor
+-   : refactor curTileColor to currentTileColor
+-   : refactor col to column in Board()
+-   : refactor I and j to row and column in drawBoard()
+-   : change println() statements to finish drawing the last row/column dividers
+
+-   : BUG FIX (added conditional statement to switchColor at end of each row to only swap color on even board sizes, this is needed to ensure the board is in the proper diagonal grid) Also have to suppress warning due to the BOARD_DIMENSION being final, this code is effectively dead code, but is important
+
+
+Changes in Piece.java
+-   : add canton description to draw()
+-   : refactor col to column for class variable and Pieces() param
+
+
+Changes in Tile.java
+-   : refactor col to column for class variable and constructor param
+-   : move piece declaration to top of class
+-   : add description for constructor
+-   : add description for setPiece()
+-   : refactor draw() to call piece.draw()
+
+
+Changes to Color.java
+- add a private variable to keep track of color symbol and the corresponding constructor, aswell as an @override for toString()
+
+
+
+A bunch of other inline comments and minor changes have also been made
