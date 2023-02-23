@@ -1,0 +1,4 @@
+What are 3 good practices related to exception handling?
+1. Use specific exceptions which describe the actual error. Don't throw a general Exception when you could through a FileNotFoundException of a different custom one. AKA the exception being thrown should actually tell you something about what went wrong
+2. Catch exceptions at the appropriate level where the error actually occurs. This allows for better understanding of why the exception was thrown and prevents the code from not knowing how to handle the error
+3. Don't ignore exceptions. If an exception is thrown during code execution, fix the error before moving forward otherwise the exception will be swallowed by the rest of the program and will make debugging more difficult if there are a bunch of exceptions. 
